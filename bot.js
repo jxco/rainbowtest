@@ -6,41 +6,32 @@ client.on('ready', () => {
 console.log("log");
 });
 
-client.on('ready', async() => {
-var server = "497499938448605194"; 
-var channel = "498890133450391574";
-    setInterval(()=>{
-    client.guilds.get(server).channels.get(channel).send('yousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7iyousifd7i00')
-    },305);
-})
-
-
-client.on('message', message => {
-    if(message.content.startsWith('!say')) {
-    if(message.author.id !== "501376527251013661") return;
-    var args = message.content.split(' ').slice(1).join(' ');
-    message.channel.send(args);
-    }
-    });
-
-client.on('ready',async () => {
-  let GUILDID = '497502071218503721';
-  let CHANNELID = '501092028306685973'; 
-  voiceStay(GUILDID, CHANNELID);
-  function voiceStay(guildid, channelid) {
-    if(!guildid) throw new Error('Syntax: voiceStay function requires guildid');
-    if(!channelid) throw new Error('Syntax: voiceStay function requires channelid');
-
+client.on('ready', async () => {
+    let rSpeed = 4; 
+    let rGuild = '503647749317853196'; // اي دي السيرفر 
+    let rRole = '503920639455920138'; // اي دي الرتبة تجيبه عن طريق انك تفعل خاصية ان اي واحد يقدر يمنشن الرتبة و تمنشن الرتبة بالشات وقبل ما تمنشنها حط \
+    /* مثال :
+    \@TestingRole
+    الناتج :
+    <@&12345678987654321>
+    */
+    let rActive = true; /*
+    لتفعيل الرينبو حطها : true
+    لألغاء الرينبو حطها : false
+    */
+  rainbow(rSpeed, rGuild, rRole, rActive);
+  function rainbow(speed, guildid, roleid, enabled) {
+    if(enabled !== true && enabled !== false) throw new Error("SyntaxError: Rainbow enabled state must be true or false.");
+    if(enabled === false) return;
     let guild = client.guilds.get(guildid);
-    let channel = guild.channels.get(channelid);
+    let role = guild.roles.get(roleid);
+    let changeSpeed = speed * 1000;
 
-    if(channel.type === 'voice') {
-      channel.join().catch(e => {
-        console.log(`Failed To Join :: ${e.message}`);
+    setInterval(() => {
+      role.edit({
+        color: 'RANDOM'
       });
-    } else {
-      console.log(`Channel Type :: ${channel.type}, It must be Voice.`);
-    }
+    }, changeSpeed);
   }
 });
 
